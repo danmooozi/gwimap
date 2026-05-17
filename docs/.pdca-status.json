@@ -1,0 +1,21 @@
+{
+  "features": {
+    "gwimap": {
+      "feature": "gwimap",
+      "source": "gwimap_prd.md",
+      "level": "dynamic",
+      "phase": "archived",
+      "progress": 100,
+      "matchRate": 95,
+      "iteration": 1,
+      "maxIterations": 5,
+      "updatedAt": "2026-05-17",
+      "documents": {
+        "plan": "docs/archive/2026-05/gwimap/gwimap.plan.md",
+        "design": "docs/archive/2026-05/gwimap/gwimap.design.md",
+        "analysis": "docs/archive/2026-05/gwimap/gwimap.analysis.md",
+        "report": "docs/archive/2026-05/gwimap/gwimap.report.md"
+      }
+    }
+  }
+}
