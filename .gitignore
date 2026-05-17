@@ -1,0 +1,15 @@
+# bkit-codex
+.bkit-codex/
+
+#codex
+.codex
+.agents
+
+#app
+node_modules
+.next
+.env
+assets
+
+#etc
+.DS_Store
