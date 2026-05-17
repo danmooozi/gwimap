@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        
+        .vhs-noise {
+            position: relative;
+            overflow: hidden;
+        }
+        .vhs-noise::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .scanline-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(18, 19, 23, 0) 50%,
+                rgba(0, 0, 0, 0.2) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+
+        .glitch-text {
+            text-shadow: 2px 0 #e5b5ff, -2px 0 #00e615;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#f7e1ff",
+                      "primary": "#edffe2",
+                      "on-secondary-fixed-variant": "#7000a8",
+                      "secondary-fixed-dim": "#e5b5ff",
+                      "on-primary": "#003a01",
+                      "error-container": "#93000a",
+                      "tertiary-fixed": "#ffdbcf",
+                      "surface-tint": "#00e615",
+                      "surface-container": "#1e1f24",
+                      "inverse-surface": "#e3e2e8",
+                      "surface": "#121317",
+                      "surface-dim": "#121317",
+                      "on-error-container": "#ffdad6",
+                      "surface-bright": "#38393e",
+                      "secondary": "#e5b5ff",
+                      "on-error": "#690005",
+                      "surface-container-high": "#292a2e",
+                      "on-primary-container": "#007104",
+                      "on-primary-fixed": "#002200",
+                      "tertiary-container": "#ffd4c6",
+                      "primary-container": "#2aff2a",
+                      "on-tertiary-fixed": "#390c00",
+                      "error": "#ffb4ab",
+                      "on-secondary": "#4e0078",
+                      "on-primary-fixed-variant": "#005302",
+                      "background": "#121317",
+                      "on-surface": "#e3e2e8",
+                      "inverse-primary": "#006e04",
+                      "secondary-container": "#a100f0",
+                      "outline": "#84967d",
+                      "outline-variant": "#3b4b36",
+                      "primary-fixed-dim": "#00e615",
+                      "tertiary-fixed-dim": "#ffb59c",
+                      "surface-container-lowest": "#0d0e12",
+                      "tertiary": "#fff8f7",
+                      "inverse-on-surface": "#2f3035",
+                      "secondary-fixed": "#f4d9ff",
+                      "on-tertiary": "#5c1900",
+                      "surface-variant": "#343439",
+                      "on-tertiary-container": "#b03700",
+                      "surface-container-low": "#1a1b20",
+                      "on-tertiary-fixed-variant": "#832700",
+                      "on-background": "#e3e2e8",
+                      "on-surface-variant": "#baccb1",
+                      "surface-container-highest": "#343439",
+                      "primary-fixed": "#76ff64",
+                      "on-secondary-fixed": "#30004b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "margin-mobile": "20px",
+                      "container-max": "1200px",
+                      "margin-desktop": "48px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Geist"],
+                      "headline-lg": ["Space Grotesk"],
+                      "label-sm": ["JetBrains Mono"],
+                      "headline-xl": ["Space Grotesk"],
+                      "headline-lg-mobile": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container min-h-screen pb-32">
+<!-- Top AppBar (from JSON - Custom for Detail with Back) -->
+<header class="bg-surface/90 dark:bg-surface/90 backdrop-blur-xl border-b border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.5)] docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-margin-mobile h-16">
+<div class="flex items-center gap-4">
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary drop-shadow-[0_0_8px_rgba(0,230,21,0.6)] animate-pulse">Gwi-Map</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</div>
+</header>
+<main class="max-w-screen-md mx-auto relative">
+<!-- Hero Section: Paranormal Photo -->
+<section class="relative w-full aspect-[4/3] md:aspect-video vhs-noise overflow-hidden">
+<img alt="Abandoned hallway" class="w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="A terrifyingly dark and desolate hallway of an abandoned school building at night. The air is thick with grainy digital noise and static, reminiscent of a haunted VHS tape. Faint, ghostly white silhouettes are blurred in the distant shadows, barely visible. The lighting is harsh yet dim, casting long, unsettling shadows that crawl up the cracked, peeling walls. The entire scene is captured in a high-contrast, moody aesthetic with eerie green and purple chromatic aberration effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApgPvafSeuQv_C5Od3qN4GMz6nx_pLjyxLQ3v2XDtvG_Hx3BGzvM0PLT5aqT2n2qvGTgSV8dpKigsq5fw6IpWdqIPl5ZNq040w4EYubKkCKOZgAxsv-XBJPP3DTMJ0tCof74IJXpidKTa3TBMYZ5gkhuNb0OqeMjc3HS-VqDOJw3mE77QUtoBuPSHAz1BkOHUqFNwJ5wTfAYuPd_sznZFzmong46R3lHJ6LWXq4knA0BAeTlWg6E0utG_hKjmJf46M6GbVFgU4z7uH"/>
+<div class="absolute top-4 right-4 font-label-sm text-label-sm bg-black/60 px-3 py-1 rounded-full border border-primary/30 text-primary-fixed-dim glitch-text">
+                REC 199X-07-13 02:14:55
+            </div>
+<div class="absolute inset-0 scanline-overlay"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</section>
+<!-- Title Section -->
+<section class="px-margin-mobile -mt-12 relative z-10">
+<div class="bg-surface-container/80 backdrop-blur-2xl p-6 rounded-xl border border-outline-variant/30 shadow-2xl">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-secondary bg-on-secondary-fixed-variant/20 px-2 py-0.5 rounded border border-secondary/30">
+                        Level.5 위험지역
+                    </span>
+<span class="material-symbols-outlined text-error animate-pulse" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2 glitch-text">폐교된 수련원 본관</h2>
+<div class="flex items-center gap-2 text-on-surface-variant/80 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span>강원도 원주시 소초면 산00-0</span>
+</div>
+</div>
+</section>
+<!-- Key Information Bento Grid -->
+<section class="px-margin-mobile mt-6 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-high/50 p-4 rounded-xl border border-outline-variant/20 backdrop-blur-md">
+<p class="font-label-sm text-label-sm text-secondary mb-1">목격 시간대</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">22:00 ~ 04:00</p>
+</div>
+<div class="bg-surface-container-high/50 p-4 rounded-xl border border-outline-variant/20 backdrop-blur-md">
+<p class="font-label-sm text-label-sm text-secondary mb-1">주요 현상</p>
+<div class="flex flex-wrap gap-2 mt-1">
+<span class="bg-primary/10 text-primary text-[10px] px-2 py-0.5 rounded border border-primary/20">환청</span>
+<span class="bg-primary/10 text-primary text-[10px] px-2 py-0.5 rounded border border-primary/20">그림자</span>
+</div>
+</div>
+</section>
+<!-- User Reports Feed -->
+<section class="px-margin-mobile mt-8">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="forum">forum</span>
+                    최근 제보 현황
+                </h3>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">Live 12</span>
+</div>
+<div class="space-y-4">
+<!-- Report Card 1 -->
+<div class="bg-surface-container-lowest border-l-2 border-primary p-4 rounded-r-lg shadow-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 opacity-10">
+<span class="material-symbols-outlined text-[48px]" data-icon="skull">skull</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-6 h-6 rounded-full bg-secondary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="person">person</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">익명의 탐사자</span>
+<span class="text-[10px] text-on-surface-variant/50 ml-auto font-label-sm">30분 전</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+                        여기 복도 끝에서 계속 "똑, 똑" 거리는 소리가 들려요.. 분명 아무도 없는데 소름 돋네요.
+                    </p>
+</div>
+<!-- Report Card 2 -->
+<div class="bg-surface-container-lowest border-l-2 border-secondary p-4 rounded-r-lg shadow-lg relative overflow-hidden">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-6 h-6 rounded-full bg-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="camera">camera</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary">GhostHunter99</span>
+<span class="text-[10px] text-on-surface-variant/50 ml-auto font-label-sm">2시간 전</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+                        방금 사진 찍었는데 뒤에 누군가 서 있는 것 같은 형체가 찍혔어요. 다들 조심하세요. 기운이 너무 강합니다.
+                    </p>
+<div class="mt-3 w-20 h-20 rounded-lg bg-surface-bright flex items-center justify-center border border-outline-variant/30">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="image">image</span>
+</div>
+</div>
+<!-- Report Card 3 -->
+<div class="bg-surface-container-lowest border-l-2 border-primary/40 p-4 rounded-r-lg shadow-lg opacity-80">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-6 h-6 rounded-full bg-on-surface-variant/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="person">person</span>
+</div>
+<span class="font-label-sm text-label-sm">루머의루머</span>
+<span class="text-[10px] text-on-surface-variant/50 ml-auto font-label-sm">Yesterday</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+                        본관 3층은 절대 가지 마세요. 문이 안 열립니다.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Button -->
+<div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background via-background/90 to-transparent z-50">
+<button class="w-full max-w-screen-md mx-auto h-14 bg-primary text-on-primary font-headline-lg-mobile text-[18px] rounded-xl flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(0,230,21,0.5)] hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+            나도 제보하기
+        </button>
+</div>
+</body></html>

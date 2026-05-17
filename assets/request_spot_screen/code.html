@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+        }
+        .crt-overlay {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+        .glitch-border {
+            position: relative;
+        }
+        .glitch-border::after {
+            content: "";
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            border: 1px solid rgba(0, 230, 21, 0.3);
+            pointer-events: none;
+            z-index: -1;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #121317; }
+        ::-webkit-scrollbar-thumb { background: #00e615; border-radius: 10px; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#f7e1ff",
+                    "primary": "#edffe2",
+                    "on-secondary-fixed-variant": "#7000a8",
+                    "secondary-fixed-dim": "#e5b5ff",
+                    "on-primary": "#003a01",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#ffdbcf",
+                    "surface-tint": "#00e615",
+                    "surface-container": "#1e1f24",
+                    "inverse-surface": "#e3e2e8",
+                    "surface": "#121317",
+                    "surface-dim": "#121317",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#38393e",
+                    "secondary": "#e5b5ff",
+                    "on-error": "#690005",
+                    "surface-container-high": "#292a2e",
+                    "on-primary-container": "#007104",
+                    "on-primary-fixed": "#002200",
+                    "tertiary-container": "#ffd4c6",
+                    "primary-container": "#2aff2a",
+                    "on-tertiary-fixed": "#390c00",
+                    "error": "#ffb4ab",
+                    "on-secondary": "#4e0078",
+                    "on-primary-fixed-variant": "#005302",
+                    "background": "#121317",
+                    "on-background": "#e3e2e8",
+                    "on-surface": "#e3e2e8",
+                    "inverse-primary": "#006e04",
+                    "secondary-container": "#a100f0",
+                    "outline": "#84967d",
+                    "outline-variant": "#3b4b36",
+                    "primary-fixed-dim": "#00e615",
+                    "tertiary-fixed-dim": "#ffb59c",
+                    "surface-container-lowest": "#0d0e12",
+                    "tertiary": "#fff8f7",
+                    "inverse-on-surface": "#2f3035",
+                    "secondary-fixed": "#f4d9ff",
+                    "on-tertiary": "#5c1900",
+                    "surface-variant": "#343439",
+                    "on-tertiary-container": "#b03700",
+                    "surface-container-low": "#1a1b20",
+                    "on-tertiary-fixed-variant": "#832700",
+                    "on-background": "#e3e2e8",
+                    "on-surface-variant": "#baccb1",
+                    "surface-container-highest": "#343439",
+                    "primary-fixed": "#76ff64",
+                    "on-secondary-fixed": "#30004b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "margin-mobile": "20px",
+                    "container-max": "1200px",
+                    "margin-desktop": "48px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Geist"],
+                    "headline-lg": ["Space Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-xl": ["Space Grotesk"],
+                    "headline-lg-mobile": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="bg-surface/90 dark:bg-surface/90 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<div class="flex justify-between items-center w-full px-margin-mobile h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="ghost">mist</span>
+<h1 class="font-headline-lg-mobile text-primary drop-shadow-[0_0_8px_rgba(0,230,21,0.6)] animate-pulse">Gwi-Map</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+</div>
+</div>
+</header>
+<main class="pb-32">
+<!-- Section Selector (Tabs) -->
+<div class="flex px-margin-mobile mt-6 mb-8 gap-4 overflow-x-auto no-scrollbar">
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-primary text-on-primary font-label-sm text-label-sm shadow-[0_0_15px_rgba(0,230,21,0.4)]">제보하기</button>
+<button class="flex-shrink-0 px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm hover:border-primary transition-colors">탐색하기</button>
+</div>
+<!-- REPORT SCREEN -->
+<section class="px-margin-mobile" id="report-section">
+<div class="mb-8">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile mb-2 text-primary">새로운 심령 현상 제보</h2>
+<p class="text-on-surface-variant/70 text-sm">기록되지 않은 영적 흐름을 감지하셨나요?</p>
+</div>
+<form class="space-y-8">
+<!-- Location Selector -->
+<div class="space-y-3">
+<label class="font-label-sm text-label-sm text-primary tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+                        발생 위치
+                    </label>
+<div class="relative w-full h-48 rounded-xl overflow-hidden border border-outline-variant/50 group">
+<img class="w-full h-full object-cover grayscale brightness-50 group-hover:brightness-75 transition-all duration-700" data-alt="A dark, desaturated topographical map of Seoul city at night with neon green grid lines and glowing spirit orbs scattered across the urban landscape. The visual style is retro-digital with subtle scanline overlays and chromatic aberration effects, creating a haunting urban exploration atmosphere." data-location="Seoul, Korea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUdzZtHBNpmQ8PU-XKJdaX2kdrcV0hFOq_rfDADgvM3rHTWA3vtuLLSGy69CUPPmpEknpwG2jgLNFsoOPyOXDYksOzakuwoIOORwhJrllpsDzMRz3Ywxx3sKYKfMcseHOtYtkvS193SvKCdRGnm6nvmSV41unst8vwK1xIukm1i2PDlx96HMiLuxNTcDQM9CCqtfBVhbwa1P75B8ROZIMYtHB8AsfmjP51pFXQTXxm28fURyOzFe5UPQyyNn-eaWHNafNiOBED7Vuu"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<span class="material-symbols-outlined text-primary-fixed-dim text-4xl drop-shadow-[0_0_10px_#00e615] animate-bounce" data-icon="location_searching">location_searching</span>
+</div>
+<div class="absolute bottom-3 right-3 px-3 py-1 bg-surface/80 backdrop-blur-md rounded border border-primary/20 text-[10px] font-label-sm text-primary">핀 드롭하여 위치 확정</div>
+</div>
+</div>
+<!-- Title Input -->
+<div class="space-y-3">
+<label class="font-label-sm text-label-sm text-primary tracking-widest">사건명 (TITLE)</label>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-on-surface placeholder:text-on-surface-variant/30 py-3 transition-all duration-300 rounded-t-lg" placeholder="예: 구옥 지하의 붉은 눈동자" type="text"/>
+</div>
+<!-- Description -->
+<div class="space-y-3">
+<label class="font-label-sm text-label-sm text-primary tracking-widest">오싹한 경험 내용</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant focus:border-primary focus:ring-0 text-on-surface placeholder:text-on-surface-variant/30 p-4 transition-all duration-300 rounded-xl" placeholder="그곳에서 무엇을 보고 느끼셨나요? 상세할수록 영적 추적이 용이합니다." rows="5"></textarea>
+</div>
+<!-- Photo Upload -->
+<div class="space-y-3">
+<label class="font-label-sm text-label-sm text-primary tracking-widest flex justify-between">
+<span>현장 데이터 첨부</span>
+<span class="text-[10px] opacity-60">※ 이미지가 흐릿할수록 분석이 용이합니다</span>
+</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center gap-3 bg-surface-container-lowest/50 hover:bg-primary/5 hover:border-primary/50 transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<span class="text-sm text-on-surface-variant/70">노이즈 섞인 사진 업로드</span>
+</div>
+</div>
+<!-- Horror Level Slider -->
+<div class="space-y-6">
+<label class="font-label-sm text-label-sm text-primary tracking-widest flex justify-between">
+<span>공포 등급 (HAZARD LEVEL)</span>
+<span class="text-error font-bold">LV. 4</span>
+</label>
+<div class="relative py-4">
+<input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-error" max="5" min="1" step="1" type="range" value="4"/>
+<div class="flex justify-between mt-2 px-1">
+<span class="text-[10px] font-label-sm text-on-surface-variant/50">안전</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant/50">주의</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant/50">위험</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant/50">공포</span>
+<span class="text-[10px] font-label-sm text-error">금지</span>
+</div>
+</div>
+<!-- Dynamic Alert Message -->
+<div class="p-4 rounded-lg bg-error-container/20 border border-error/30 flex gap-3 items-start">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+<p class="text-xs text-error/90 leading-relaxed font-label-sm">높은 공포 등급이 감지되었습니다. 제보 완료 시 주변 탐사원들에게 경고 신호가 전송됩니다.</p>
+</div>
+</div>
+<!-- Category Chips -->
+<div class="space-y-3">
+<label class="font-label-sm text-label-sm text-primary tracking-widest">현상 분류</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1.5 rounded-full border border-primary text-primary text-xs font-label-sm shadow-[0_0_10px_rgba(0,230,21,0.2)]" type="button">목격</button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant text-xs font-label-sm" type="button">소리</button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant text-xs font-label-sm" type="button">기운</button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant text-xs font-label-sm" type="button">물건 이동</button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant text-xs font-label-sm" type="button">온도 저하</button>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary py-4 rounded-xl text-on-primary font-bold text-lg shadow-[0_0_25px_rgba(0,230,21,0.4)] hover:scale-[1.02] active:scale-95 transition-all mt-10 mb-20 flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+                    제보 완료
+                </button>
+</form>
+</section>
+<!-- EXPLORE SECTION (Separated for clarity in one view) -->
+<section class="px-margin-mobile mt-16 border-t border-outline-variant/30 pt-12" id="explore-section">
+<div class="mb-8">
+<div class="relative">
+<input class="w-full bg-surface-container border-2 border-outline-variant rounded-xl py-4 pl-12 pr-4 text-on-surface font-label-sm focus:border-primary transition-all" placeholder="스팟 또는 지역 검색..." type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+</div>
+</div>
+<div class="mb-10">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline-lg-mobile text-xl text-primary leading-tight">이번 주<br/>가장 무서운 스팟 TOP 10</h3>
+<span class="text-[10px] text-on-surface-variant/50 font-label-sm pb-1">갱신: 12분 전</span>
+</div>
+<!-- Ranking Bento-like list -->
+<div class="space-y-4">
+<!-- Rank 1 Card -->
+<div class="relative group overflow-hidden rounded-2xl bg-surface-container-high border border-outline-variant/50 hover:border-error/50 transition-all">
+<div class="flex h-32">
+<div class="w-1/3 relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-110" data-alt="A haunting close-up of a decaying, abandoned hospital hallway with peeling green paint, flickering fluorescent lights casting long shadows, and a thick atmospheric fog rolling across the floor. The style is hyper-realistic analog horror with high contrast and dark moody lighting, emphasizing the isolation and decay." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl__oHGzvSGMfK-RBTJDovkjlLUbz2FWFAUu9g8bWa_hZU-NyXjJM4A7dgLt5eqPIIkwKMud0Zjm5WdmnJHX6DOwgAHbemg_NpC63I68bOlP9_t5ttCgX-13rssNVL18hka3oAzoQqptZaClPRTQFEZqmCZQYRI7nNGpBh1LSzIOs7trazvdNVf1WFPcT3xFn1fXJ0hCIN3JzKs9STcqchkoWlSXHR2rG-ZSCnoODvpDvMRM9idQVIokstpTslWYszw4C8nx5j-6_S"/>
+<div class="absolute top-0 left-0 bg-error px-2 py-1 font-label-sm text-[10px] text-on-error font-bold">TOP 1</div>
+</div>
+<div class="w-2/3 p-4 flex flex-col justify-between">
+<div>
+<h4 class="font-bold text-on-surface truncate">폐쇄된 신성 정신병원 304호</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded bg-error/10 text-[10px] text-error font-label-sm">LV.5</span>
+<span class="text-[10px] text-on-surface-variant/70">경기 파주시</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" data-icon="chat_bubble">chat_bubble</span> 1,204</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" data-icon="near_me">near_me</span> 14.2km</span>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-error/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<!-- Rank 2 Card -->
+<div class="relative group overflow-hidden rounded-2xl bg-surface-container-high border border-outline-variant/50 hover:border-primary/50 transition-all">
+<div class="flex h-24">
+<div class="w-24 relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale brightness-75 group-hover:scale-110 transition-transform" data-alt="A dimly lit, narrow alleyway in an old traditional village at night, with a single crooked wooden door slightly ajar and a faint blue glow emanating from within. The scene is shrouded in deep shadows and mist, captured in a grainy, vintage film aesthetic with muted earthy tones and ghostly lighting highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5hYO-djwomEZl90QkxxvCZgM-2Nu4tvDVKHD-I4yS2d3FoLEDEcuT78EBwC1Bx5TGR9jxJ_sk0ZnZbu8hzZYTrIpUrAvuS2103nNZGeWDZeDlOJDWoVHmRtlO5lM_MhiAZFXScFigG55kLkB-02h6B7xVUEbeGnGXy11Fpx5YfevTKQWVgbB2CMCficPi6nbULs5qk--UmZSD_-URUebOfO4fM8R3GneC8P7u9PCooNRodh39kNfqqKjw0LpDs51rXZ4AfqIKAp7g"/>
+<div class="absolute top-0 left-0 bg-surface px-2 py-1 font-label-sm text-[10px] text-on-surface font-bold">TOP 2</div>
+</div>
+<div class="flex-1 p-3 flex flex-col justify-center">
+<h4 class="font-bold text-on-surface text-sm truncate">서촌 한옥 마을 우물터</h4>
+<div class="flex items-center gap-4 mt-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-[10px] text-primary font-label-sm">LV.4</span>
+<span class="text-[10px] text-on-surface-variant/70 flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" data-icon="chat_bubble">chat_bubble</span> 856</span>
+<span class="text-[10px] text-on-surface-variant/70 flex items-center gap-1"><span class="material-symbols-outlined text-[12px]" data-icon="near_me">near_me</span> 2.1km</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Filters -->
+<div class="flex gap-2 mb-6 overflow-x-auto no-scrollbar py-2">
+<button class="px-4 py-2 bg-surface-container-highest rounded-lg text-xs font-label-sm text-primary border border-primary/30">전체 지역</button>
+<button class="px-4 py-2 bg-surface-container rounded-lg text-xs font-label-sm text-on-surface-variant border border-outline-variant/30">공포 레벨순</button>
+<button class="px-4 py-2 bg-surface-container rounded-lg text-xs font-label-sm text-on-surface-variant border border-outline-variant/30">최근 제보순</button>
+</div>
+<!-- Card List Grid -->
+<div class="grid grid-cols-1 gap-6">
+<!-- Regular Card -->
+<div class="bg-surface-container-low rounded-3xl overflow-hidden border border-outline-variant/20 shadow-xl">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-500" data-alt="An eerie, dark forest at dusk where gnarled tree branches reach like skeletal fingers toward a pale, blood-red moon. The ground is covered in a dense, low-lying fog that obscures the path, and tiny white specs of light resemble floating spirits. The mood is supernatural and mysterious with high contrast black and deep red tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeUreEO1XbE_lhYqQTE13203LrRMpLTCh9HvCLa_T5mN10DyxKx7_QkqKKIyBXHJ7Q-GCz1GQ83UDjq8AYDxD7L0oLpzgFIoVIDrtwfz_evyu_UCvnAiqg-uV3YRbVDEjdFAP42Eq2R3oU4AbZdArsH0K5R3fi5udB2MhRPT5OqRuffjYNjVVbqkWeOkOZExeQzPj0VEXiiMaNSC0NtfYdlcQKZGPQFGFPP_tPsXH-NG1ASpbpOxY9JbbIAH5WSYh7jERbjHEsPTiY"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-surface/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-primary border border-primary/20 font-label-sm">#목격담</span>
+<span class="bg-surface/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-primary border border-primary/20 font-label-sm">#야간탐사</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-3">
+<h5 class="font-bold text-lg text-on-surface">북한산 근처 자욱한 안개 구역</h5>
+<span class="text-error font-label-sm font-bold">LV. 3</span>
+</div>
+<p class="text-on-surface-variant/80 text-sm mb-4 line-clamp-2">밤마다 산책로 중간에서 흰 소복을 입은 여인이 나타난다는 제보가 잇따르고 있습니다. 특히 비 오는 날 관측 빈도가 높습니다.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="visibility">visibility</span>
+<span class="text-[12px] font-label-sm text-on-surface-variant">2.4k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="error">error</span>
+<span class="text-[12px] font-label-sm text-on-surface-variant">42</span>
+</div>
+</div>
+<span class="text-[11px] font-label-sm text-on-surface-variant/60">제보 2일 전</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="bg-surface-container/95 dark:bg-surface-container/95 backdrop-blur-2xl fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant/30 shadow-[0_-8px_30px_rgba(0,0,0,0.8)]">
+<div class="flex justify-around items-center h-20 pb-safe px-base max-w-container-max mx-auto">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="map">map</span>
+<span class="font-label-sm text-label-sm">지도</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-sm text-label-sm">탐색</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary drop-shadow-[0_0_5px_rgba(0,230,21,0.8)] Active: translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined text-3xl mb-1" data-icon="add_circle" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="font-label-sm text-label-sm">제보</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">마이</span>
+</a>
+</div>
+</nav>
+<!-- CRT Screen Overlay -->
+<div class="crt-overlay fixed inset-0 z-[100] opacity-20 mix-blend-overlay pointer-events-none"></div>
+</body></html>

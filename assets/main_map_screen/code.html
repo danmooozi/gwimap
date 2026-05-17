@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Geist:wght@100;300;400;500;700&amp;family=JetBrains+Mono:wght@100;300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.crt-overlay {
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none
+    }
+.glitch-text {
+    text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9
+    }
+.grain {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCMdlG4csLnoKTBAV6XKjpp7catMdbpp7Z9XYilBBIsDIPXHsf4blaJ6lp1TD7r_GrJJestbt7Xd-kKf80yM7jkNbkYrVLRyOOsS6tgPXG72d_MuFvtvfelZEQqcsZug_Ws52JI8ERq09b-GufPJchNNverg0-8X1JZmi4rMSP1dYjuFhGjTaxteHkp8vfJYJDEF32uzFC-xfffJmCMSz0qTylTgjaILLQPzq8z9nDKbi8DSf-sU-dYReKXn5gJNTz_9hY4zsn9MZwK);
+    opacity: 0.05
+    }</style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#f7e1ff",
+                        "primary": "#edffe2",
+                        "on-secondary-fixed-variant": "#7000a8",
+                        "secondary-fixed-dim": "#e5b5ff",
+                        "on-primary": "#003a01",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffdbcf",
+                        "surface-tint": "#00e615",
+                        "surface-container": "#1e1f24",
+                        "inverse-surface": "#e3e2e8",
+                        "surface": "#121317",
+                        "surface-dim": "#121317",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#38393e",
+                        "secondary": "#e5b5ff",
+                        "on-error": "#690005",
+                        "surface-container-high": "#292a2e",
+                        "on-primary-container": "#007104",
+                        "on-primary-fixed": "#002200",
+                        "tertiary-container": "#ffd4c6",
+                        "primary-container": "#2aff2a",
+                        "on-tertiary-fixed": "#390c00",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#4e0078",
+                        "on-primary-fixed-variant": "#005302",
+                        "background": "#121317",
+                        "on-surface": "#e3e2e8",
+                        "inverse-primary": "#006e04",
+                        "secondary-container": "#a100f0",
+                        "outline": "#84967d",
+                        "outline-variant": "#3b4b36",
+                        "primary-fixed-dim": "#00e615",
+                        "tertiary-fixed-dim": "#ffb59c",
+                        "surface-container-lowest": "#0d0e12",
+                        "tertiary": "#fff8f7",
+                        "inverse-on-surface": "#2f3035",
+                        "secondary-fixed": "#f4d9ff",
+                        "on-tertiary": "#5c1900",
+                        "surface-variant": "#343439",
+                        "on-tertiary-container": "#b03700",
+                        "surface-container-low": "#1a1b20",
+                        "on-tertiary-fixed-variant": "#832700",
+                        "on-background": "#e3e2e8",
+                        "on-surface-variant": "#baccb1",
+                        "surface-container-highest": "#343439",
+                        "primary-fixed": "#76ff64",
+                        "on-secondary-fixed": "#30004b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "20px",
+                        "container-max": "1200px",
+                        "margin-desktop": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Geist"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-xl": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-hidden h-screen flex flex-col">
+<!-- Top AppBar -->
+<header class="bg-surface/90 dark:bg-surface/90 backdrop-blur-xl border-b border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.5)] docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-margin-mobile h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="ghost">mist</span>
+<h1 class="font-headline-lg-mobile text-primary drop-shadow-[0_0_8px_rgba(0,230,21,0.6)] animate-pulse">Gwi-Map</h1>
+</div>
+<button class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-2xl" data-icon="search">search</span>
+</button>
+</header>
+<!-- Main Content: Map Canvas -->
+<main class="flex-1 relative overflow-hidden">
+<!-- CRT Screen Effect Layer -->
+<div class="absolute inset-0 z-40 crt-overlay opacity-30 pointer-events-none"></div>
+<div class="absolute inset-0 z-40 grain pointer-events-none"></div>
+<!-- The Map -->
+<div class="absolute inset-0 bg-surface-container-lowest">
+<img class="w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="A dark, desaturated high-contrast satellite view of a dense metropolitan area at night. The city grid is illuminated by faint, eerie blue and green bioluminescent-style street lights. The overall aesthetic is gritty, reminiscent of a retro analog horror CCTV feed with subtle digital noise and scanning lines. Deep black shadows dominate the cityscape, creating a mysterious and haunted atmosphere." data-location="Seoul" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArmxOmhFpJNxPPOIGzUWfCsl8mJgLngW7NdGsUTkYhkL6ND3HhsW1rdEo_ICg2YoJ1uSdn3ieKUB0BGytWF8fZM6WBOJx6nrhdhdkM0t8wbquzb23YvbxGljn99I-odt2KRoRUsTlCMeWT7vdyaE8ErE6-WdKrWAggB8tEuF5QraUIX9ildVWtj2JI0EC8XX0RiHaMED67QJGSN3KUM1S6CEvXk2OV4A6ldg2EH-5jAPhB49Nvl1sdICqWMJrhdpb0uVeS15MW0TiM"/>
+<!-- Map Markers -->
+<!-- LV 3 High Danger Marker -->
+<div class="absolute top-[35%] left-[45%] group cursor-pointer z-10">
+<div class="relative">
+<div class="absolute inset-0 bg-error animate-ping rounded-full opacity-75 blur-md"></div>
+<div class="w-8 h-8 bg-error shadow-[0_0_20px_#ffb4ab] rounded-full flex items-center justify-center border-2 border-primary-container relative z-10">
+<span class="material-symbols-outlined text-background text-lg" data-icon="skull" data-weight="fill">skull</span>
+</div>
+</div>
+</div>
+<!-- LV 1 Low Danger Marker -->
+<div class="absolute top-[60%] left-[20%] group cursor-pointer z-10">
+<div class="relative">
+<div class="w-6 h-6 bg-primary-container shadow-[0_0_15px_#00e615] rounded-full flex items-center justify-center border-2 border-surface relative z-10">
+<span class="material-symbols-outlined text-on-primary-container text-sm" data-icon="mystery">mystery</span>
+</div>
+</div>
+</div>
+<!-- LV 2 Mid Danger Marker -->
+<div class="absolute top-[20%] left-[75%] group cursor-pointer z-10">
+<div class="relative">
+<div class="w-7 h-7 bg-secondary-container shadow-[0_0_15px_#a100f0] rounded-full flex items-center justify-center border-2 border-on-secondary-container relative z-10">
+<span class="material-symbols-outlined text-on-secondary-container text-base" data-icon="detector_status">detector_status</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating UI Elements -->
+<div class="absolute top-4 right-4 z-30 flex flex-col gap-2">
+<button class="w-12 h-12 bg-surface-container-high/80 backdrop-blur-md rounded-xl border border-outline-variant/30 flex items-center justify-center text-primary shadow-xl">
+<span class="material-symbols-outlined" data-icon="my_location">my_location</span>
+</button>
+<button class="w-12 h-12 bg-surface-container-high/80 backdrop-blur-md rounded-xl border border-outline-variant/30 flex items-center justify-center text-primary shadow-xl">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+</button>
+</div>
+<!-- Slide-up Spot Summary Card -->
+<div class="absolute bottom-4 left-4 right-4 z-40">
+<div class="bg-surface-container/95 dark:bg-surface-container/95 backdrop-blur-2xl rounded-2xl border border-outline-variant/50 shadow-[0_-8px_30px_rgba(0,0,0,0.8)] overflow-hidden transition-transform duration-500 translate-y-0">
+<div class="p-4 flex gap-4 items-start">
+<!-- Spot Photo -->
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 border border-outline-variant/40 relative">
+<img class="w-full h-full object-cover" data-alt="A grainy, low-light photograph of a dilapidated, abandoned colonial-style building shrouded in thick fog. The windows are dark and jagged like hollow eyes, and the surrounding overgrown vegetation looks twisted and unnatural. The lighting is an eerie pale green, suggesting a supernatural or radioactive presence. The image quality mimics an old VHS tape with visible tracking lines and chromatic aberration on the edges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKg6VyRrZnw56WZ5YkQ1qFwCLMDDnU8rcKZBid3Ajnb8wvu3uGbBODGkqunJl-6ilmwcla5VGFS2NpAi8kxnsNhbbIQfxMSqhOj8xbtQxwcVB7vtFzQuc9hLNtqMWGqfICxLqyw2s5vQ0V36dGm-IofTSYAGZhc5eCKP7pX8C6v7YECYR32ZMkE1YQcacZgb0BDwU7R9bKFicpxSXOkpZc5OzSTiyOaq3iLDJD0BbL66XNCKWnAyqbLoSM9mC1MKXYcgNFA-v_J2et"/>
+<div class="absolute top-1 left-1 bg-error text-on-error font-label-sm text-[10px] px-1.5 py-0.5 rounded uppercase tracking-wider">Lv.3 Danger</div>
+</div>
+<!-- Spot Info -->
+<div class="flex-1 flex flex-col h-24">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-lg-mobile text-primary glitch-text">폐교된 수련원 본관</h3>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="bookmark">bookmark</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm mb-auto">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="visibility">visibility</span>
+<span>지금 12명이 이 주변에 있어요</span>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container-high rounded border border-outline-variant/30 font-label-sm text-[10px] text-secondary">#폴터가이스트</span>
+<span class="px-2 py-0.5 bg-surface-container-high rounded border border-outline-variant/30 font-label-sm text-[10px] text-secondary">#심야_출몰</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="px-4 pb-4 flex gap-2">
+<button class="flex-1 h-10 bg-primary text-on-primary rounded-lg font-label-sm flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="navigation">navigation</span>
+                        길 찾기
+                    </button>
+<button class="w-10 h-10 bg-surface-container-highest flex items-center justify-center rounded-lg border border-outline-variant text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="bg-surface-container/95 dark:bg-surface-container/95 backdrop-blur-2xl fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant/30 shadow-[0_-8px_30px_rgba(0,0,0,0.8)] flex justify-around items-center h-20 pb-safe px-base">
+<!-- 지도 (Active) -->
+<a class="flex flex-col items-center justify-center text-primary drop-shadow-[0_0_5px_rgba(0,230,21,0.8)] hover:text-primary transition-all active:translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="map" data-weight="fill">map</span>
+<span class="font-label-sm text-label-sm">지도</span>
+</a>
+<!-- 탐색 -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary transition-all active:translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-sm text-label-sm">탐색</span>
+</a>
+<!-- 제보 -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary transition-all active:translate-y-[-2px] duration-200" href="#">
+<div class="w-12 h-12 -mt-6 bg-primary-container rounded-full flex items-center justify-center text-on-primary-container shadow-[0_0_15px_#00e615]">
+<span class="material-symbols-outlined text-3xl" data-icon="add_circle">add_circle</span>
+</div>
+<span class="font-label-sm text-label-sm mt-1">제보</span>
+</a>
+<!-- 마이 -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary transition-all active:translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">마이</span>
+</a>
+</nav>
+</body></html>
