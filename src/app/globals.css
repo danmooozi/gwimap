@@ -1,0 +1,120 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #121317;
+  color: #e3e2e8;
+  font-family: "Space Grotesk", "Geist", sans-serif;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 56px 20px;
+}
+
+h1 {
+  margin: 0 0 12px;
+  color: #edffe2;
+}
+
+ul {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.spot-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.map-canvas {
+  margin-top: 16px;
+}
+
+.map-placeholder {
+  border: 1px dashed #3b4b36;
+  border-radius: 10px;
+  padding: 0;
+  margin-bottom: 12px;
+  color: #baccb1;
+  background: #14161a;
+  overflow: hidden;
+}
+
+.map-surface {
+  width: 100%;
+  height: 360px;
+}
+
+.card {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid #343439;
+  border-radius: 10px;
+  background: #1a1b20;
+  color: #e3e2e8;
+  text-decoration: none;
+}
+
+.filter-panel {
+  margin-top: 16px;
+}
+
+.policy-notice {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #3b4b36;
+  background: #1a1f1a;
+  color: #baccb1;
+  font-size: 14px;
+}
+
+.form {
+  margin-top: 16px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+}
+
+input,
+textarea,
+select,
+button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #343439;
+  background: #121317;
+  color: #e3e2e8;
+}
+
+button {
+  cursor: pointer;
+  background: #2aff2a;
+  color: #003a01;
+  font-weight: 700;
+}
+
+.inline-btn {
+  width: auto;
+  margin-left: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  background: #a100f0;
+  color: #f7e1ff;
+}
